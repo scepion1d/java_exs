@@ -8,21 +8,58 @@ import spock.lang.Specification
 class GroovyCalculatorSpec extends Specification {
     def instance = Spy(GroovyCalculator)
 
-    def "simple success test"() {
+    def "Throws IllegalArgumentException when statement doesn't contain allowed operation"() {
         given:
             //Setup
         when:
-            def result = instance.calculate("0+0")
+            instance.calculate("0.222 < 2")
         then:
-            result == 0d
+            thrown IllegalArgumentException
     }
 
-    def "invalid test"() {
+    def "Throws IllegalArgumentException when statement contains wrong number of operands"() {
         given:
             //Setup
         when:
-            def result = instance.calculate("0+1")
+            instance.calculate("0.222+")
         then:
-            result == 1d
+            thrown IllegalArgumentException
+    }
+
+    def "Successfully performs addition"() {
+        given:
+            //Setup
+        when:
+            def result = instance.calculate("0.222 + 2")
+        then:
+            result == 2.222d
+    }
+
+    def "Successfully performs subtraction"() {
+        given:
+            //Setup
+        when:
+            def result = instance.calculate("0.222 - 2")
+        then:
+            result == -1.778d
+    }
+
+    def "Successfully performs multiplication"() {
+        given:
+            //Setup
+        when:
+            def result = instance.calculate("0.222 * 2")
+        then:
+            result == 0.444d
+    }
+
+
+    def "Successfully performs division"() {
+        given:
+            //Setup
+        when:
+            def result = instance.calculate("0.222 / 2")
+        then:
+            result == 0.111d
     }
 }
