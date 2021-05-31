@@ -1,5 +1,6 @@
 package com.epam.cdp;
 
+import com.epam.cdp.logger.LogbackLogger;
 import com.epam.cdp.logger.Logger;
 import com.epam.cdp.logger.StdOutLogger;
 
@@ -8,7 +9,8 @@ import static java.lang.Thread.sleep;
 public class App
 {
     public static void main( String[] args ) throws InterruptedException {
-        Logger logger = new StdOutLogger();
+//        Logger logger = new StdOutLogger();
+        Logger logger = new LogbackLogger();
 
         while (true) {
             find_prime_numbers(-1000, 1000, logger);
