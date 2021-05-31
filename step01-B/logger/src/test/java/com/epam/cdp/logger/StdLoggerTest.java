@@ -16,7 +16,7 @@ public class StdLoggerTest
     public void should_write_debug_log_into_std_out() throws Exception {
         Pattern pattern = Pattern.compile(String.format(log_format, "DEBUG"));
 
-        String subject = tapSystemErr(() -> logger.debug("TEST"));
+        String subject = tapSystemOut(() -> logger.debug("TEST"));
 
         Assertions.assertEquals(true, pattern.matcher(subject).matches());
     }
@@ -25,7 +25,7 @@ public class StdLoggerTest
     public void should_write_info_log_into_std_out() throws Exception {
         Pattern pattern = Pattern.compile(String.format(log_format, "INFO"));
 
-        String subject = tapSystemErr(() -> logger.info("TEST"));
+        String subject = tapSystemOut(() -> logger.info("TEST"));
 
         Assertions.assertEquals(true, pattern.matcher(subject).matches());
     }
