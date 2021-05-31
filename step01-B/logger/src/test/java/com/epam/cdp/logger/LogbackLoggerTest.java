@@ -1,12 +1,10 @@
 package com.epam.cdp.logger;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-
 import java.util.regex.Pattern;
 
-import static com.github.stefanbirkner.systemlambda.SystemLambda.tapSystemErr;
-import static com.github.stefanbirkner.systemlambda.SystemLambda.tapSystemOut;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import static com.github.stefanbirkner.systemlambda.SystemLambda.*;
 
 public class LogbackLoggerTest
 {
@@ -19,7 +17,6 @@ public class LogbackLoggerTest
         Pattern pattern = Pattern.compile(String.format(log_format, "DEBUG"));
 
         String subject = tapSystemOut(() -> logger.debug("TEST"));
-        System.out.println(pattern);
 
         Assertions.assertEquals(true, pattern.matcher(subject).matches());
     }
