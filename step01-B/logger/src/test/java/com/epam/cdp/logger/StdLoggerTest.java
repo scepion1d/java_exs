@@ -13,37 +13,37 @@ public class StdLoggerTest
     private static final String log_format = "\\[%s\\]\\s{1,2}\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}\\.\\d{4} : TEST\\n";
 
     @Test
-    public void shouldWriteDebugLogIntoStdOut() throws Exception {
+    public void should_write_debug_log_into_std_out() throws Exception {
         Pattern pattern = Pattern.compile(String.format(log_format, "DEBUG"));
 
-        String subject = tapSystemOut(() -> { logger.debug("TEST"); });
+        String subject = tapSystemOut(() -> logger.debug("TEST"));
 
         Assertions.assertEquals(true, pattern.matcher(subject).matches());
     }
 
     @Test
-    public void shouldWriteInfoLogIntoStdOut() throws Exception {
+    public void should_write_info_log_into_std_out() throws Exception {
         Pattern pattern = Pattern.compile(String.format(log_format, "INFO"));
 
-        String subject = tapSystemOutNormalized(() -> { logger.info("TEST"); });
+        String subject = tapSystemOutNormalized(() -> logger.info("TEST"));
 
         Assertions.assertEquals(true, pattern.matcher(subject).matches());
     }
 
     @Test
-    public void shouldWriteWarnLogIntoStdOut() throws Exception {
+    public void should_write_warn_log_into_std_out() throws Exception {
         Pattern pattern = Pattern.compile(String.format(log_format, "WARN"));
 
-        String subject = tapSystemOutNormalized(() -> { logger.warn("TEST"); });
+        String subject = tapSystemOutNormalized(() -> logger.warn("TEST"));
 
         Assertions.assertEquals(true, pattern.matcher(subject).matches());
     }
 
     @Test
-    public void shouldWriteErrorLogIntoStdOut() throws Exception {
+    public void should_write_error_log_into_std_out() throws Exception {
         Pattern pattern = Pattern.compile(String.format(log_format, "ERROR"));
 
-        String subject = tapSystemOutNormalized(() -> { logger.error("TEST"); });
+        String subject = tapSystemOutNormalized(() -> logger.error("TEST"));
 
         Assertions.assertEquals(true, pattern.matcher(subject).matches());
     }
