@@ -9,12 +9,15 @@ import javax.annotation.Nullable;
 @Setter
 public class Node {
     private long id;
-    private long depth;
 
     private @Nullable Node left;
     private @Nullable Node right;
 
     public Node(long id) {
         this.id = id;
+    }
+
+    public boolean is_leaf() {
+        return  left == null && right == null;
     }
 }

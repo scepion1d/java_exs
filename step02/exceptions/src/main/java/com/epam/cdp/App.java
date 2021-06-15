@@ -7,8 +7,7 @@ import java.util.List;
  * Hello world!
  *
  */
-public class App 
-{
+public class App {
     public static void main(String[] args) {
         try {
             out_of_mem_easy();

@@ -1,54 +1,71 @@
 package com.epam.cdp.tree;
 
-import lombok.Getter;
-
 import javax.annotation.Nullable;
 import java.util.Random;
+import java.util.Stack;
 
 public class Tree {
-    private long id_seq = 0;
-    private Node root = new Node(id_seq);
-    private long size;
+    private long id_seq;
+    private Node root;
 
-    public Tree(long size) {
-        this.size = size;
+    public Tree(long depth) {
+        id_seq = 0;
+        root = new Node(id_seq);
+        grow(root, depth);
     }
 
-    private  void set_depth(Node node) {
-        long value = Math.max(depth(node.getLeft()), depth(node.getRight())) + 1;
-        node.setDepth(value);
+    private void grow(Node node, long depth) {
+        if (node == null || depth == 0) return;
+        System.out.format("Node %d on level %d\n", node.getId(), depth);
+
+        int state = new Random().nextInt(3);
+
+        if (state < 1) {
+            node.setLeft(new Node(++this.id_seq));
+            node.setRight(new Node(++this.id_seq));
+        } else if (state < 2) {
+            node.setLeft(new Node(++this.id_seq));
+        } else {
+            node.setRight(new Node(++this.id_seq));
+        }
+        grow(node.getLeft(), depth - 1);
+        grow(node.getRight(), depth - 1);
     }
 
-    private long depth(Node node) {
-        if (node == null) return 0;
-        return node.getDepth();
+    public void swap_all_recursive() {
+        swap_all_recursive(root);
     }
 
-    public Node rotate_right(Node a) {
-        Node b = a.getLeft();
-        Node c = b.getRight();
+    private void swap_all_recursive(@Nullable Node node) {
+        if (node == null || node.is_leaf()) return;
 
-        b.setRight(a);
-        a.setLeft(c);
+        swap_children(node);
 
-        set_depth(a);
-        set_depth(b);
-
-        return b;
+        if (node.getLeft() != null) swap_all_recursive(node.getLeft());
+        if (node.getRight() != null) swap_all_recursive(node.getLeft());
     }
 
-    public Node rotate_left(Node a) {
-        Node b = a.getRight();
-        Node c = b.getLeft();
-
-        b.setLeft(a);
-        a.setRight(c);
-
-        set_depth(a);
-        set_depth(b);
-
-        return b;
+    private void swap_children(Node node) {
+        Node buffer = node.getLeft();
+        node.setLeft(node.getRight());
+        node.setRight(buffer);
     }
 
+    public void swap_all() {
+        Stack<Node> stack = new Stack<>();
 
+        Node node = root;
+
+        while (node != null || stack.size() > 0) {
+            while (node != null) {
+                stack.push(node);
+                node = node.getLeft();
+            }
+
+            node = stack.pop();
+            swap_children(node);
+
+            node = node.getRight();
+        }
+    }
 }
