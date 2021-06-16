@@ -10,10 +10,10 @@ import java.io.IOException;
  */
 public class App 
 {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String... args) throws InterruptedException {
         while (true) {
             new Statistic(args).printAll();
-            Thread.sleep(5000);
+            Thread.sleep(5000); //TODO: fix later, keywords: spin wait, busy waiting
         }
     }
 }
