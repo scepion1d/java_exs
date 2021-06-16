@@ -12,8 +12,8 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.7</maven.compiler.source>
-    <maven.compiler.target>1.7</maven.compiler.target>
+    <maven.compiler.source>15</maven.compiler.source>
+    <maven.compiler.target>15</maven.compiler.target>
     <app.main.class>com.epam.cdp.App</app.main.class>
   </properties>
 
@@ -37,6 +37,22 @@
       <artifactId>jsr305</artifactId>
       <version>3.0.2</version>
     </dependency>
+
+    <!-- using @Slf4j with lombok and pretty useful logging system -->
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>1.2.3</version>
+    </dependency>
+
+    <!-- Library with useful collections from the google co    -->
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>LATEST</version>
+    </dependency>
+
+
   </dependencies>
 
   <build>
