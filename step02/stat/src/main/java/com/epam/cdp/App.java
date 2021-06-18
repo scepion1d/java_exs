@@ -15,6 +15,7 @@ public class App
             new ClassPathStat().print();
             new ThreadsStat().print();
             new FileDescriptorsStat().print();
+            new ClassLoadStat().print();
 
             Thread.sleep(5000);
         }

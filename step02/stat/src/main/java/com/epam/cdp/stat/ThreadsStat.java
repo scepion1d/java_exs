@@ -17,14 +17,12 @@ public class ThreadsStat extends BasicStat {
     }
 
     private String threadToString(Thread thread) {
-        String header = thread.getId() + " " + thread.getName() + "\n";
-
         String trace = Arrays.stream(thread.getStackTrace())
                 .map(x -> {
                    return x.getFileName() + ":" + x.getLineNumber() + "#" + x.getMethodName();
                 })
                 .collect(Collectors.joining("\n\t\t"));
 
-        return header + "\t\t" + trace;
+        return thread.getId() + " " + thread.getName() + "\n\t\t" + trace;
     }
 }
