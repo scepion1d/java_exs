@@ -1,6 +1,7 @@
 package com.epam.cdp.stat;
 
 import com.google.common.base.Joiner;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -12,6 +13,7 @@ import java.util.List;
 import java.util.jar.JarEntry;
 import java.util.jar.JarInputStream;
 
+@Slf4j
 public class ClassLoadStat extends BasicStat {
     private final String jarPath;
 

@@ -1,10 +1,12 @@
 package com.epam.cdp.stat;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.lang.management.ManagementFactory;
 import java.lang.management.OperatingSystemMXBean;
 import java.lang.reflect.Method;
 
-
+@Slf4j
 public class FileDescriptorsStat extends BasicStat {
     @Override
     public void print() {
@@ -20,7 +22,7 @@ public class FileDescriptorsStat extends BasicStat {
                     getOpenFileDescriptorCountField.invoke(osMxBean) + "/" + getMaxFileDescriptorCountField.invoke(osMxBean)
             );
         } catch (Exception e) {
-            log.error("Can't get file descriptors statistics: " + e.getMessage());
+            log.error("Can't get file descriptors statistics: ", e);
         }
     }
 }

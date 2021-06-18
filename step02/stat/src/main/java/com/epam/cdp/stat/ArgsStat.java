@@ -2,8 +2,10 @@ package com.epam.cdp.stat;
 
 import com.google.common.base.Joiner;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @RequiredArgsConstructor
+@Slf4j
 public class ArgsStat extends BasicStat {
     private final String[] args;
 
