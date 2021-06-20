@@ -58,9 +58,9 @@ public class ClassLoadStat extends BasicStat {
 
             log.info("Application threads: [\n\t{}\n\t\t{}\n]", jarPath, classJoiner.join(classes));
         } catch (FileNotFoundException e) {
-            log.error("Can't load file {}: {}", jarPath, e.getMessage());
+            log.error("Can't load file {}: ", jarPath, e);
         } catch (IOException e) {
-            log.error("Can't obtain classes list from the file {}: {}", jarPath, e.getMessage());
+            log.error("Can't obtain classes list from the file {}: ", jarPath, e);
         }
     }
 }
