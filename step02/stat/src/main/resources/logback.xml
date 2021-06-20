@@ -1,0 +1,93 @@
+<configuration>
+    <property name="LOG_DIR" value="./log" />
+
+    <appender name="commandLineFile" class="ch.qos.logback.core.FileAppender">
+        <file>./log/commandLineOptions.log</file>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>DEBUG`</level>
+        </filter>
+        <append>false</append>
+        <encoder>
+            <pattern>%-5level %d{HH:mm:ss.SSSS} %logger{36} : %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="envFile" class="ch.qos.logback.core.FileAppender">
+        <file>./log/environmentVars.log</file>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>DEBUG`</level>
+        </filter>
+        <append>false</append>
+        <encoder>
+            <pattern>%-5level %d{HH:mm:ss.SSSS} %logger{36} : %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="classPathFile" class="ch.qos.logback.core.FileAppender">
+        <file>./log/classPath.log</file>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>DEBUG`</level>
+        </filter>
+        <append>false</append>
+        <encoder>
+            <pattern>%-5level %d{HH:mm:ss.SSSS} %logger{36} : %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="classLoadFile" class="ch.qos.logback.core.FileAppender">
+        <file>./log/classLoad.log</file>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>DEBUG`</level>
+        </filter>
+        <append>false</append>
+        <encoder>
+            <pattern>%-5level %d{HH:mm:ss.SSSS} %logger{36} : %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="fileDescFile" class="ch.qos.logback.core.FileAppender">
+        <file>./log/fileDesc.log</file>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>DEBUG`</level>
+        </filter>
+        <append>false</append>
+        <encoder>
+            <pattern>%-5level %d{HH:mm:ss.SSSS} %logger{36} : %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="threadsFile" class="ch.qos.logback.core.FileAppender">
+        <file>./log/threads.log</file>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>DEBUG`</level>
+        </filter>
+        <append>false</append>
+        <encoder>
+            <pattern>%-5level %d{HH:mm:ss.SSSS} %logger{36} : %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.epam.cdp.stat.ArgsStat" level="debug" additivity="false">
+        <appender-ref ref="commandLineFile"/>
+    </logger>
+
+    <logger name="com.epam.cdp.stat.EnvStat" level="debug" additivity="false">
+        <appender-ref ref="commandLineFile"/>
+    </logger>
+
+    <logger name="com.epam.cdp.stat.ClassPathStat" level="debug" additivity="false">
+        <appender-ref ref="classPathFile"/>
+    </logger>
+
+    <logger name="com.epam.cdp.stat.ClassLoadStat" level="debug" additivity="false">
+        <appender-ref ref="classLoadFile"/>
+    </logger>
+
+    <logger name="com.epam.cdp.stat.FileDescriptorsStat" level="debug" additivity="false">
+        <appender-ref ref="fileDescFile"/>
+    </logger>
+
+    <logger name="com.epam.cdp.stat.ThreadsStat" level="debug" additivity="false">
+        <appender-ref ref="threadsFile"/>
+    </logger>
+</configuration>
