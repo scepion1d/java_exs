@@ -1,15 +1,12 @@
 package com.epam.cdp;
 
 import com.epam.cdp.array.Array;
-import lombok.extern.slf4j.Slf4j;
+import com.epam.cdp.string.LettersFrequency;
 
-/**
- * Hello world!
- *
- */
 public class App 
 {
     public static void main( String[] args ) {
-        Array.print(1000);
+        new Array(1000).print();
+        new LettersFrequency("yyAABBCCyc").print();
     }
 }

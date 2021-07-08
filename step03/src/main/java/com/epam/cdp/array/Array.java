@@ -9,15 +9,14 @@ public class Array {
     private final Vector<Double> elements;
     private final int size;
 
-    public static void print(int size) {
-        Array array = new Array(size);
-        log.info("Max: {}", array.maxElement());
-        log.info("Min: {}", array.minElement());
-        log.info("Average: {}", array.avgElement());
-        log.info("Max 5: {}", array.maxElements(5));
+    public void print() {
+        log.info("Max: {}", maxElement());
+        log.info("Min: {}", minElement());
+        log.info("Average: {}", avgElement());
+        log.info("Max 5: {}", maxElements(5));
     }
 
-    private Array(int size) {
+    public Array(int size) {
         elements = new Vector<>();
         this.size = size;
         init();
